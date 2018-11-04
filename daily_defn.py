@@ -5,8 +5,8 @@ import re
 
 def defn():
     """
-    
-    :return:
+    Fetches the title of the daily bing image from the website
+    :return: the title, the soup object from bs4
     """
     file = requests.get("https://www.bing.com/")
     soup = bs4.BeautifulSoup(file.text, "xml")
@@ -17,7 +17,7 @@ def defn():
         i_str = str(i)
         try:
             ind = i_str.index(find) + len(find)
-            name = i_str[ind: i_str.index(' (', ind + 1)]
-            return (name, linkList)
+            title = i_str[ind: i_str.index(' (', ind + 1)]
+            return (title, linkList)
         except:
             continue
