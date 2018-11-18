@@ -18,6 +18,7 @@ def defn():
         try:
             ind = i_str.index(find) + len(find)
             title = i_str[ind: i_str.index(' (', ind + 1)]
+            title = title.encode('ascii').decode('unicode_escape')
             return (title, linkList)
         except:
             continue
